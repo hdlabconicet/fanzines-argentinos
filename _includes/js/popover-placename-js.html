@@ -1,0 +1,77 @@
+<!-- load leaflet dependencies -->
+<link rel="stylesheet" href="{{ '/assets/lib/leaflet/leaflet.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/lib/leaflet/leaflet.fullscreen.css' | relative_url }}">
+<script src="{{ '/assets/lib/leaflet/leaflet.js' | relative_url }}"></script>
+<script src="{{ '/assets/lib/leaflet/Leaflet.fullscreen.min.js' | relative_url }}"></script>
+<style>
+.custom-popover {
+  max-width: none;
+  width: 400px;
+}
+.custom-popover .popover-body {
+  height: 100%;
+  overflow: auto;
+}
+</style>
+<script>
+    /* add annotation data from CSV */
+    var placedata = {
+        {%- for l in site.data.placename_main -%}
+        {{ l.key | jsonify }} : { "city": {{ l.city | escape | jsonify }}, {% if l.latitude %}"latitude": {{ l.latitude | escape | jsonify }}{%- endif -%}, {% if l.longitude %}"longitude": {{ l.longitude | escape | jsonify }}{%- endif -%}, {% if l.annotation %}"annotation": {{ l.annotation | escape | jsonify }}{%- endif -%} }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+    };
+
+    /* add popovers to each element */
+    /* select elements with the class 'pop-annotation'*/
+    var popAnnotations = document.querySelectorAll('.pop-annotation');
+
+    /* use data to create popover */
+    popAnnotations.forEach(function(element) {
+      var popId = element.getAttribute('id');
+      var record = placedata[popId];
+      if (record && record.city && record.annotation && record.latitude && record.longitude) {
+        var popoverOptions = {
+          title: record.city,
+          content: record.annotation + '<div id="map-' + popId + '"></div>',
+          trigger: 'focus',
+          html: true,
+          template: '<div class="popover custom-popover" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>'
+        };
+
+        /* initialize popover */
+        var popover = new bootstrap.Popover(element, popoverOptions);
+
+        /* add event listener to initialize map after popover is shown */
+        element.addEventListener('shown.bs.popover', function () {
+          var mapContainerId = 'map-' + popId;
+          var mapContainer = document.getElementById(mapContainerId);
+
+          /* set map container dimensions */
+          mapContainer.style.height = '300px';
+          mapContainer.style.width = '100%';
+
+          /* delay map initialization until popover content is fully rendered */
+          setTimeout(function() {
+            /* set up map */
+            var mapCenter = [record.latitude, record.longitude];
+            /* init map, set center and zoom */
+            var map = L.map(mapContainerId, { zoomControl: false }).setView(mapCenter, 10);
+
+            /* define map layer */
+            var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+            });
+
+            /* load base map */
+            Esri_WorldStreetMap.addTo(map);
+
+            /* add marker */ 
+            L.marker(mapCenter).addTo(map)
+            .bindPopup(record.city).openPopup();
+            
+          /* delay 100 milliseconds to ensure map is rendered first */
+          }, 100);
+        });
+      }
+    });
+</script>

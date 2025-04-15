@@ -1,0 +1,14 @@
+filename,object_location,image_small,image_thumb
+carta1.jpg,/objects/carta1.jpg,/objects/small/carta1_sm.jpg,/objects/thumbs/carta1_th.jpg
+carta2.jpg,/objects/carta2.jpg,/objects/small/carta2_sm.jpg,/objects/thumbs/carta2_th.jpg
+carta3.pdf,/objects/carta3.pdf,/objects/small/carta3_sm.jpg,/objects/thumbs/carta3_th.jpg
+carta3_p1.jpg,/objects/carta3_p1.jpg,/objects/small/carta3_p1_sm.jpg,/objects/thumbs/carta3_p1_th.jpg
+carta3_p2.jpg,/objects/carta3_p2.jpg,/objects/small/carta3_p2_sm.jpg,/objects/thumbs/carta3_p2_th.jpg
+carta4.jpg,/objects/carta4.jpg,/objects/small/carta4_sm.jpg,/objects/thumbs/carta4_th.jpg
+carta5.jpg,/objects/carta5.jpg,/objects/small/carta5_sm.jpg,/objects/thumbs/carta5_th.jpg
+dibujo.jpg,/objects/dibujo.jpg,/objects/small/dibujo_sm.jpg,/objects/thumbs/dibujo_th.jpg
+fax.jpg,/objects/fax.jpg,/objects/small/fax_sm.jpg,/objects/thumbs/fax_th.jpg
+folleto.jpg,/objects/folleto.jpg,/objects/small/folleto_sm.jpg,/objects/thumbs/folleto_th.jpg
+newsletter.jpg,/objects/newsletter.jpg,/objects/small/newsletter_sm.jpg,/objects/thumbs/newsletter_th.jpg
+programa_p1.jpg,/objects/programa_p1.jpg,/objects/small/programa_p1_sm.jpg,/objects/thumbs/programa_p1_th.jpg
+programa_p2.jpg,/objects/programa_p2.jpg,/objects/small/programa_p2_sm.jpg,/objects/thumbs/programa_p2_th.jpg

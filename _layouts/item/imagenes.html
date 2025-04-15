@@ -1,0 +1,35 @@
+---
+# layout for "obra" display template
+# creates large images with a gallery feature
+layout: item/item-page-base
+gallery: true
+---
+{% assign children = site.data[site.metadata] | where_exp: 'item','item.parentid == page.objectid' %}
+
+    <div>
+
+        <br/>
+    {% for child in children %}
+    <div id="{{ child.objectid }}" class="mb-4">
+        <a class="spotlight gallery-img" data-download="true" title="{% if page.title != child.title %}{{ child.title | escape }}{% else %}{{ page.title | escape }} [{{ forloop.index }}]{% endif %}" href="{{ child.object_location | relative_url }}">
+            <img src="{{ child.image_small | relative_url }}" alt="{{ child.image_alt_text | default: child.description | default: child.title | default: page.title | escape }}" class="img-fluid mb-2">
+            {% if page.title != child.title %}<div><small class="text-dark">{{ child.title }}</small></div>{% endif %}
+        </a>
+    </div>
+    {% endfor %}
+</div>
+<div>
+
+        {% include item/child/compound-item-download-buttons.html %}
+        {% if page.object_obra %}
+        {% assign transcripciones_type = page.object_obra | slice: 0,1 %}
+        {% if transcripciones_type == '/' %}
+        {% assign transcripciones_location = page.object_obra | remove_first: '/' %}
+        {% assign transcripciones = site.pages | where: 'path', transcripciones_location | first %}
+        {{ transcripciones.content | markdownify }}
+        {% else %}
+        {{ page.object_obra | markdownify }}
+        {% endif %}
+        {% endif %} 
+
+    </div>

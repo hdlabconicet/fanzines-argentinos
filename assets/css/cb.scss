@@ -1,0 +1,125 @@
+---
+# base CSS for collectionbuilder
+# includes some theming options
+# pulled in from "theme.yml" and "config-theme-colors.csv"
+---
+@charset "utf-8";
+
+/* base variables pulled from theme.yml */
+$base-font-family: {{ site.data.theme.base-font-family | default: '""' }};
+$base-font-size: {{ site.data.theme.base-font-size | default: '""' }};
+$text-color: {{ site.data.theme.text-color | default: '""' }};
+$link-color: {{ site.data.theme.link-color | default: '""' }};
+
+/* theme colors pulled from config-theme-colors */
+{% assign btns = site.data.config-theme-colors | where_exp: "item","item.color != nil" %}
+{% if btns != empty %}
+{% for btn in btns %}
+{% assign color = btn.color | strip %}{% if color != empty %}
+${{ btn.color_class | slugify }}: {{ color }};{% endif %}
+{% endfor %}
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    {% for btn in btns %}{% assign color = btn.color | strip %}{% if color != empty %}
+    "{{ btn.color_class | slugify }}": ${{ btn.color_class | slugify }}{% unless forloop.last %},{% endunless %}
+    {% endif %}{% endfor %}
+  ),
+  $theme-colors
+);
+@import "theme-colors", "theme-utilities";
+{% endif %}
+
+@import "base", "pages", "custom";
+
+
+// p {
+//   font-size: $prose-font-size;
+//   margin-bottom: 1em;
+//   width: 100%;
+// }
+
+.prosa{
+  // margin-left: 2em;
+  padding-right: 1em;
+  text-align: justify;
+  font-size: 20px;
+}
+
+.verso {
+font-size: 20px;
+margin-bottom:4px;
+}
+
+.estribillo
+{
+font-style: italic;
+font-size: 20px;
+margin-bottom:4px;
+}
+
+.nota {
+font-size: 16px;
+margin-bottom: 24px;
+}
+
+.info {
+  // display: none;
+  font-size: 18px;
+font-weight: bold;
+
+}
+
+.rubrica {
+font-size: 18px;
+font-style: italic;
+color: #7b241c
+}
+
+
+.estrofa {
+  margin-bottom:40px;
+  }
+
+// .rima{
+//     font-weight: bold;
+//     }
+
+    .rima:hover{
+      font-weight: bold;
+      }
+
+.speaker{
+  font-weight: bold;
+  }
+
+h1 {
+  margin-bottom:40px;
+  }
+
+  .pop-annotation {
+      cursor: pointer;
+  }
+
+  .del
+  {
+    text-decoration-line:  line-through;
+}
+
+.add
+{
+  color: green;
+}
+
+h4
+{
+  text-align: center;
+}
+
+.folio
+
+{
+  font-weight: bold;
+  padding-bottom: 3px;
+  padding-top: 12px;
+}
