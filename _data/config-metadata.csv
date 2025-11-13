@@ -1,13 +1,21 @@
 field,display_name,browse_link,external_link,dc_map,schema_map
 title,Título,,,DCTERMS.title,headline
-alt_title,Titulos alternativos,,,DCTERMS.alt_title,alt_title
-creator,Autor/a,,,DCTERMS.creator,creator
-editor,Editores/as,,,DCTERMS.editor,editor
-date,Fecha de publicacion/creacion,,,DCTERMS.date,dateCreated
-location,Lugar de publicacion/creacion,,,,contentLocation
-identifier,Identificador,,,DCTERMS.identifier,identifier
-locus,Locus,,,DCTERMS.locus,locus
+creator,Creadorx,,,DCTERMS.creator,creator
+date,Fecha,,,DCTERMS.date,dateCreated
 description,Descripción,,,DCTERMS.description,description
 subject,Temas,true,,DCTERMS.subject,keywords
-source,Fuente,,,,
-
+location,Lugar de creación,,,DCTERMS.location,contentLocation
+latitude,,,,,
+longitude,,,,,
+source,Fuente,,,DCTERMS.source,
+identifier,Identificador,,,,
+type,,,,DCTERMS.type,
+format,,,,,encodingFormat
+language,Lengua,,,DCTERMS.language,
+rightsstatement,,,,DCTERMS.rights,license
+carrier,Soporte material,,,DCTERMS.medium,
+production,Producción,,,,
+relation,Relación,,,DCTERMS.relation,
+technical_notes,Observaciones técnicas,,,,
+coverage,,,,DCTERMS.coverage,
+publisher,,,,DCTERMS.publisher,

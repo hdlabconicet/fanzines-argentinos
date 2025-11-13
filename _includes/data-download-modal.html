@@ -1,9 +1,9 @@
 {% comment %}
-Este include crea una ventana modal emergente con opciones de exportación de datos.
-La lógica de los formatos que aparecen se basa en los stubs de config-nav:
-si subject.html, map.html, location.html, o timeline.html están presentes,
-los formatos de datos correspondientes estarán disponibles para descargar.
-{%- endcomment %}
+    This include creates a modal pop up with data export options.
+    The logic of which formats appear is based on config-nav stubs:
+    if subject.html, map.html, location.html, or timeline.html are present, 
+    corresponding data formats will be available for download.
+{%- endcomment -%}
 
 {%- assign stubs = site.data.config-nav | map: 'stub' | join: ';' -%}
 <button type="button" class="btn btn-primary btn-lg float-md-end" data-bs-toggle="modal" data-bs-target="#dataModal">Descargar metadatos</button>
@@ -13,18 +13,19 @@ los formatos de datos correspondientes estarán disponibles para descargar.
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title" id="dataModalLabel">Datos de la colección</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Descargue los datos de esta colección en una variedad de formatos reutilizables.</p>
-            
+
+                <p>Descargue los datos de esta colección en diferentes formatos reutilizables.</p>
+                
                 {% if site.data.theme.metadata-export-fields %}
                 <div class="card my-3">
                     <div class="card-body">
                         <h2 class="card-title h4">Metadatos completos</h2>
-                        <p class="card-text">Todos los campos de metadatos para todos los documentos de la colección, disponibles como una hoja de cálculo CSV (utilizable en Excel, Google Sheets y programas similares) o un archivo JSON (a menudo usado con aplicaciones web).</p>
-                        <a href="{{ '/assets/data/metadata.csv' | relative_url }}" class="btn btn-outline-dark" target="_blank">Metadata CSV</a>
-                        <a href="{{ '/assets/data/metadata.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">Metadata JSON</a>
+                        <p class="card-text">Metadatos de todos los documentos de la colección, disponibles como archivo CSV (para uso en Excel, Google Sheets y programas similares) o archivo JSON (para uso en aplicaciones web).</p>
+                        <a href="{{ '/assets/data/metadata.csv' | relative_url }}" class="btn btn-outline-dark" download>CSV</a>
+                        <a href="{{ '/assets/data/metadata.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">JSON</a>
                     </div>
                 </div>
                 {%- endif -%}
@@ -33,7 +34,7 @@ los formatos de datos correspondientes estarán disponibles para descargar.
                     <div class="card-body">
                         <h2 class="card-title h4">Facetas de metadatos</h2>
                         <p class="card-text">Lista de valores únicos y su recuento para campos específicos de metadatos, útil para entender el contenido de los campos.</p>
-                        <a href="{{ '/assets/data/facets.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">Facets JSON</a>
+                        <a href="{{ '/assets/data/facets.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">JSON</a>
                     </div>
                 </div>
                 {%- endif -%}
@@ -42,8 +43,8 @@ los formatos de datos correspondientes estarán disponibles para descargar.
                     <div class="card-body">
                         <h2 class="card-title h4">Temas</h2>
                         <p class="card-text">Valores únicos y recuentos de metadatos de temas, útil para analizar más a fondo el contenido de esta colección.</p>
-                        <a href="{{ '/assets/data/subjects.csv' | relative_url }}" class="btn btn-outline-dark" target="_blank">Subjects CSV</a>
-                        <a href="{{ '/assets/data/subjects.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">Subjects JSON</a>
+                        <a href="{{ '/assets/data/subjects.csv' | relative_url }}" class="btn btn-outline-dark" download>CSV</a>
+                        <a href="{{ '/assets/data/subjects.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">JSON</a>
                     </div>
                 </div>
                 {% endif %}
@@ -51,9 +52,9 @@ los formatos de datos correspondientes estarán disponibles para descargar.
                 <div class="card my-3">
                     <div class="card-body">
                         <h2 class="card-title h4">Ubicaciones</h2>
-                        <p class="card-text">Valores únicos y recuentos de metadatos de ubicación, útiles para la visualización y análisis adicionales de los nombres de lugares de esta colección.</p>
-                        <a href="{{ '/assets/data/locations.csv' | relative_url }}" class="btn btn-outline-dark" target="_blank">Locations CSV</a>
-                        <a href="{{ '/assets/data/locations.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">Locations JSON</a>
+                        <p class="card-text">Valores únicos y recuentos de metadatos de locaciones, útiles para la visualización y análisis adicionales de los nombres de lugares de esta colección.</p>
+                        <a href="{{ '/assets/data/locations.csv' | relative_url }}" class="btn btn-outline-dark" download>CSV</a>
+                        <a href="{{ '/assets/data/locations.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">JSON</a>
                     </div>
                 </div>
                 {%- endif -%}
@@ -61,8 +62,8 @@ los formatos de datos correspondientes estarán disponibles para descargar.
                 <div class="card my-3">
                     <div class="card-body">
                         <h2 class="card-title h4">GeoJSON</h2>
-                        <p class="card-text">Metadatos para todos los documentos de la colección que tienen coordenadas geográficas en formato <a href="https://en.wikipedia.org/wiki/GeoJSON" target="_blank" rel="noopener">GeoJSON</a>, útil para la exploración y análisis adicionales de esta colección a través de una lente geográfica.</p>
-                        <a href="{{ '/assets/data/geodata.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">Geodata JSON</a>
+                        <p class="card-text">Metadatos para todos los documentos de la colección que tienen coordenadas geográficas en formato <a href="https://en.wikipedia.org/wiki/GeoJSON">GeoJSON</a> útil para la exploración y análisis adicionales de esta colección a través de una lente geográfica.</p>
+                        <a href="{{ '/assets/data/geodata.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">JSON</a>
                     </div>
                 </div>
                 {%- endif -%}
@@ -70,29 +71,30 @@ los formatos de datos correspondientes estarán disponibles para descargar.
                 <div class="card my-3">
                     <div class="card-body">
                         <h2 class="card-title h4">Cronología</h2>
-                        <p class="card-text">Una exportación de datos en formato JSON centrada en el tiempo, diseñada para su uso con <a href="https://timeline.knightlab.com/" target="_blank" rel="noopener">TimelineJS</a>.</p>
-                        <a href="{{ '/assets/data/timelinejs.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">TimelineJS JSON</a>
+                        <p class="card-text">Una exportación de datos en formato JSON centrada en el tiempo, diseñada para su uso con <a href="https://timeline.knightlab.com/">TimelineJS</a>.</p>
+                        <a href="{{ '/assets/data/timelinejs.json' | relative_url }}" class="btn btn-outline-dark" target="_blank">JSON</a>
                     </div>
                 </div>
                 {%- endif -%}
                 <div class="card my-3">
                     <div class="card-body">
                         <h2 class="card-title h4">Código fuente del sitio web</h2>
-                        <p class="card-text">Repositorio de GitHub que contiene el código fuente de este proyecto construido con <a href="https://github.com/CollectionBuilder/collectionbuilder-csv" target="_blank" rel="noopener">CollectionBuilder-CSV</a>.</p>
-                        <a href="{{ site.source-code | default: 'https://github.com/CollectionBuilder/collectionbuilder-csv' }}" class="btn btn-outline-dark" target="_blank" rel="noopener">Código fuente</a>
+                        <p class="card-text">Repositorio de GitHub que contiene el código fuente de este proyecto construido con <a href="https://github.com/CollectionBuilder/collectionbuilder-csv">CollectionBuilder-CSV</a>.</p>
+                        <a href="{{ site.source-code | default: 'https://github.com/hdlabconicet/fanzines-argentinos' }}" class="btn btn-outline-dark">Ver código</a>
                     </div>
                 </div>
-    
+
             </div>
         </div>
     </div>
 </div>
+
 <script type="application/ld+json">
 {
     "@context":"https://schema.org/",
     "@type":"Dataset",
     "name":"{{ site.title | escape }} Data",
-    "description":"Metadatos y datos derivados de {{ site.title | escape }}. {{ site.description | escape }}",
+    "description":"Metadata and data derived from {{ site.title | escape }}. {{ site.description | escape }}",
     {% if site.keywords %}"keywords": {% assign keywords = site.keywords | split: ';' %} {{ keywords | jsonify }},{% endif %}
     "url":"{{ page.url | absolute_url }}",
     "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -108,7 +110,7 @@ los formatos de datos correspondientes estarán disponibles para descargar.
         {
             "@type": "Dataset",
             "name": "{{ site.title | escape }} Metadata Facets",
-            "description": "Valores únicos y recuentos de campos de facetas de metadatos.",
+            "description": "Unique values and counts of metadata facet fields.",
             "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
             "distribution":[
                 {
@@ -122,8 +124,8 @@ los formatos de datos correspondientes estarán disponibles para descargar.
         {% if stubs contains "subject" %}
         {
             "@type": "Dataset",
-            "name": "{{ site.title | escape }} recuentos de metadatos de sujetos",
-            "description": "Valores únicos y recuentos de campos de metadatos de sujetos.",
+            "name": "{{ site.title | escape }} metadata subject counts",
+            "description": "Unique values and counts of metadata subject fields.",
             "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
             "distribution":[
                 {
@@ -142,8 +144,8 @@ los formatos de datos correspondientes estarán disponibles para descargar.
         {% if stubs contains "location" %}
         {
             "@type": "Dataset",
-            "name": "{{ site.title | escape }} recuentos de metadatos de ubicaciones",
-            "description": "Valores únicos y recuentos de campos de metadatos de ubicaciones.",
+            "name": "{{ site.title | escape }} metadata location counts",
+            "description": "Unique values and counts of metadata location fields.",
             "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
             "distribution":[
                 {
@@ -162,8 +164,8 @@ los formatos de datos correspondientes estarán disponibles para descargar.
         {% if stubs contains "map" %}
         {
             "@type": "Dataset",
-            "name": "{{ site.title | escape }} metadatos geográficos",
-            "description": "Datos GeoJSON que contienen todos los objetos con latitudes y longitudes y metadatos descriptivos asociados.",
+            "name": "{{ site.title | escape }} geographic metadata",
+            "description": "Geojson data containing all objects with lat-longs and associated descriptive metadata.",
             "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
             "distribution":[
                 {
@@ -177,8 +179,8 @@ los formatos de datos correspondientes estarán disponibles para descargar.
         {% if stubs contains "timeline" %}
         {
             "@type": "Dataset",
-            "name": "{{ site.title | escape }} metadatos de la línea de tiempo",
-            "description": "Metadatos basados en el tiempo formateados para TimelineJS u otras aplicaciones.",
+            "name": "{{ site.title | escape }} timeline metadata",
+            "description": "Time-based metadata formatted for TimelineJS or other applications.",
             "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
             "distribution":[
                 {
@@ -191,8 +193,8 @@ los formatos de datos correspondientes estarán disponibles para descargar.
         {%- endif -%}
         {
             "@type": "Dataset",
-            "name": "{{ site.title | escape }} metadatos completos",
-            "description": "Exportación completa de metadatos para objetos de {{ site.title | escape }}.",
+            "name": "{{ site.title | escape }} full metadata",
+            "description": "Complete metadata export for {{ site.title | escape }} objects.",
             "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
             "distribution":[
                 {

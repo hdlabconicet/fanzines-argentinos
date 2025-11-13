@@ -8,9 +8,9 @@
     <div class="card-body">
         <dl>
             <dt>Cita recomendada:</dt>
-            <dd>"{{ page.title }}", {{ site.title }}, {{ site.organization-name }}</dd>
+            <dd>"{{ page.title }}", {{ site.title }}, {% if site.organization-name %}{{ site.organization-name }}.{% endif %}</dd>
             <dt>Enlace de la referencia:</dt>
-            <dd>{{ page.url | absolute_url }}</dd>
+            <dd><a href="{{ page.url | absolute_url }}">{{ page.url | absolute_url }}</a></dd>
         </dl>
     </div>
 </div>

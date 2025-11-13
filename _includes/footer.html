@@ -27,41 +27,25 @@
         <div class="col-md-5 mt-3 text-center">
 
            {% if site.organization-logo-nav %} <p class="text-md-end">
-                <a href="{{ site.organization-link }}" target="_blank" rel="noopener">
+                <a href="{{ site.organization-link }}">
                     <img id="footer-logo" class="img-fluid" src="{{ site.organization-logo-nav | relative_url }}" alt="{{ site.organization-name | escape }} home">
                 </a>
             </p>
             {% endif %}
-            <!-- <p class="text-white text-md-end" id="footer-credits">
-                <small><em>Mantenido por          </em><br/>
-                    <br/>
-                    <a href="https://hdlab.space/" target="_blank" rel="noopener" title="HD Lab CONICET">
-                        <img src="{{ '/assets/img/hdlab-logo.png' | relative_url }}" class="img-fluid" alt="HD Lab CONICET" >
+            <p class="text-white text-md-end" id="footer-credits">
+                <small>
+                    <a href="https://hdlab.space/" title="Humanidades Digitales Lab">
+                        <img src="{{ '/assets/img/hdlab.jpg' | relative_url }}" class="img-fluid" alt="hdlab logo" >
                     </a>
                 </small>
-            </p> -->
-
-            <!-- <p class="text-white text-md-end" id="footer-credits">
-                <small><em>Con el apoyo de          </em><br/>
-                    <br/>
-                    <a href="https://www.bn.gov.ar/" target="_blank" rel="noopener" title="Biblioteca Nacional Mariano Moreno">
-                        <img src="{{ '/assets/img/Web_Logo_BN_2024.png' | relative_url }}" class="img-fluid" alt="Biblioteca Nacional Mariano Moreno" >
-                    </a>
-                </small>
-            </p> -->
+            </p>
 
         </div>
 
     </div>
 
     <div class="col-md-12 text-center pt-3 pb-1">
-        <!-- <p class="text-white">Última actualización {{ site.time | date: '%Y' }}</p> -->
-
-        <p class="text-white">
-            <small>
-                    <img src="{{ '/assets/img/logos-verona+hdlab-conicet.jpg' | relative_url }}" class="img-fluid" alt="Logos institucionales" >
-            </small>
-        </p>
+        <p class="text-white">Última actualización {{ site.time | date: '%Y' }}</p>
     </div>
 
 </footer>

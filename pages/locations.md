@@ -7,6 +7,6 @@ permalink: /locations.html
 cloud-fields: site.data.theme.locations-fields
 ---
 
-## Lugares
+## Lugares mencionados
 
-Encuentra los documentos según el lugar de impresión del libro.
+Encuentre fanzines según los lugares mencionados en el número.
