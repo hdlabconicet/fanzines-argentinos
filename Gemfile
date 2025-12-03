@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # needed for Jekyll
-gem 'jekyll'
+gem 'jekyll', '~> 4.3'
 gem 'webrick'
 gem 'logger'
 gem 'base64'
@@ -18,3 +18,10 @@ unless Gem.win_platform?
   gem 'image_optim'
   gem 'image_optim_pack'
 end
+
+gem 'kramdown'
+gem 'kramdown-parser-gfm'
+
+gem 'jekyll-seo-tag'
+gem 'jekyll-sitemap'
+gem 'jekyll-feed'
