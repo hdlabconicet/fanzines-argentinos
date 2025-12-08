@@ -9,4 +9,4 @@ cloud-fields: site.data.theme.subjects-fields
 
 ## Temas
 
-Estas etiquetas te permitirán explorar los temas y palabras clave de la colección.
+Estas etiquetas permiten explorar los creadorxs, temas y palabras clave de la colección.
