@@ -7,7 +7,7 @@ credits: true
 # Look in _includes/feature for options to easily add features to the page
 ---
 
-{% include feature/nav-menu.html sections="Sobre la edición;Sección 1;Sección 2;Sección 3;" %}
+{% include feature/nav-menu.html sections="Sobre el proyecto;Marcos teóricos;Bibliografía;" %}
 
 ## Sobre el proyecto
 
@@ -30,7 +30,7 @@ normalizada y la visualización de datos:
 
 3. **Visualizaciones de datos**: Secciones dedicadas a la visualización analítica del corpus para estudiar patrones de circulación, temas y conexiones dentro del archivo.
 
-## Marcos Teóricos: El zine como «espacio fronterizo» y dispositivo híbrido
+## Marcos Teóricos: El zine como «espacio fronterizo» y dispositivo híbrido {#marcos-teóricos}
 
 **Título**
 

@@ -166,7 +166,7 @@
 
     {% for i in (1..repeatCount) %}
         {% if i == repeatCount and include.credits == true %}
-            {% capture jekyll_toc %}{{ jekyll_toc }}<li><a href="#technical">Technical</a>{% endcapture %}
+            {% capture jekyll_toc %}{{ jekyll_toc }}<li><a href="#creditos">Créditos</a>{% endcapture %}
         {% endif %}
         {% capture jekyll_toc %}{{ jekyll_toc }}</li></{{ listModifier }}>{% endcapture %}
     {% endfor %}
